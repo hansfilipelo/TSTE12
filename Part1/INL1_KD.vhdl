@@ -13,10 +13,10 @@ begin
     process(A)
     begin
         case B is
-            when "00"      =>  Y <= A(0);
-            when "01" =>  Y <= A(1);
-            when "10" =>  Y <= A(2);
-            when others =>  Y <= A(3);
+            when "00" => Y <= A(0);
+            when "01" => Y <= A(1);
+            when "10" => Y <= A(2);
+            when others => Y <= A(3);
         end case;
     end process;
 end KD;
