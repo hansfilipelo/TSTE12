@@ -10,7 +10,7 @@ end INL1_KD;
 
 architecture KD of INL1_KD is
 begin
-    process(A)
+    process(A, B)
     begin
         case B is
             when "00" => Y <= A(0);
