@@ -12,7 +12,7 @@ package body INL3_KB is
         VARIABLE one_h_count : integer := 0;
         VARIABLE zero_l_count : integer := 0;
     begin
-        for I in 0 to A'length loop
+        for I in 0 to A'length-1 loop
             if A(I) = 'L' or A(I) = '0' then
                 zero_l_count := zero_l_count + 1;
             elsif A(I) = 'H' or A(I) = '1' then
@@ -20,15 +20,15 @@ package body INL3_KB is
             else
                 return 'X';
             end if;
-
-            if one_h_count > zero_l_count then
-                return '1';
-            elsif zero_l_count > one_h_count then
-                return '0';
-            else
-                return 'W';
-            end if;
         end loop;
+
+        if one_h_count > zero_l_count then
+            return '1';
+        elsif zero_l_count > one_h_count then
+            return '0';
+        else
+            return 'W';
+        end if;
     end function;
 
 end package body;

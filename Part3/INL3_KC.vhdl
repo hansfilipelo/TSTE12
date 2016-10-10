@@ -14,34 +14,25 @@ end INL3_KC;
 architecture KC of INL3_KC is
 begin
     process(C)
-        VARIABLE state : integer := 0;
+        VARIABLE state : bit_vector(2 downto 0) := "000";
     begin
         
         if (C'event and C='1') then
-            
-            if state = 0 then
+            if R = '1' then
                 Q <= '0';
-                if D = '0' then
-                    state := 1;
-                end if;
-            
-            elsif state = 1 then
-                if D = '1' then
-                    state := 2;
-                else
-                    state := 0;
-                end if;
-
-            elsif state = 2 then
-                if D = '1' then
+                state := "000";
+                
+            else 
+                state := state(1 downto 0) & D;
+                if state = "011" then
                     Q <= '1';
+                else
+                    Q <= '0';
                 end if;
-                state := 0;
             end if;
 
-
+                
         end if;
-
     end process;
 end KC;
 
